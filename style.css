@@ -103,3 +103,63 @@ input[type=checkbox] {
     flex-direction: row;
     flex-wrap: wrap;
 }
+
+.book {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 5px solid black;
+    border-radius: 25px;
+    height: 300px;
+    width: 250px;
+    padding: 15px;
+    margin: 20px;
+    background-color: #fbd082;
+}
+
+.title {
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.author {
+    font-size: 30px;
+    margin-bottom: 20px;
+}
+
+.pages {
+    font-size: 25px;
+    margin-bottom: 20px;
+}
+
+button:focus {
+    outline: 0;
+}
+
+.readBtn {
+    font-size: 20px;
+    height: 35px;
+    width: 110px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    border: solid 3px black;
+}
+
+#removeBtn {
+    font-size: 20px;
+    height: 35px;
+    width: 110px;
+    border-radius: 10px;
+    border: solid 3px black;
+    background-color: #d7d9da;
+}
+
+#submit {
+    font-size: 20px;
+    height: 35px;
+    width: 110px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    border: solid 3px black;
+}
