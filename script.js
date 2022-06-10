@@ -18,11 +18,11 @@ addBook.addEventListener('click', addBookToLibrary);
 let myLibrary = [];
 
 class Book {
-    constructor(title, author, pages, read) {
-        this.title = title;
-        this.author = author;
-        this.pages = pages;
-        this.read = read;
+    constructor() {
+        this.title = form.title.value;
+        this.author = form.author.value;
+        this.pages = form.pages.value + 'pages';
+        this.read = form.read.checked;
     };
 };
 
@@ -30,11 +30,11 @@ function addBookToLibrary(e) {
     e.preventDefault();
     popUpForm.style.display = 'none';
 
-    let currentBook = new Book(title, author, pages, read);
+    let currentBook = new Book();
     myLibrary.push(currentBook);
     storeBook();
     storeData();
-    FormData.reset();
+    form.reset();
 };
 
 function storeBook() {
@@ -43,12 +43,12 @@ function storeBook() {
 
     books.forEach(book => {
         display.removeChild(book);
-    })
+    });
 
     for (let i = 0; i < myLibrary.length; i++) {
         createBook(myLibrary[i]);
-    }
-}
+    };
+};
 
 // Create and append a new book to the library-container on screen
 function createBook(item) {
@@ -76,6 +76,8 @@ function createBook(item) {
     bookDiv.appendChild(pageDiv);
 
     readBtn.classList.add('readBtn');
+    bookDiv.appendChild(readBtn);
+
     if (item.read === false) {
         readBtn.textContent = 'Not Read';
         readBtn.style.backgroundColor = '#e04f63';
@@ -83,7 +85,6 @@ function createBook(item) {
         readBtn.textContent = 'Read';
         readBtn.style.backgroundColor = '#63da63';
     };
-    bookDiv.appendChild(readBtn);
 
     removeBookBtn.textContent = 'Remove';
     removeBookBtn.setAttribute('id', 'removeBtn');
@@ -91,7 +92,7 @@ function createBook(item) {
 
     library.appendChild(bookDiv);
 
-    removeBtn.addEventListener('click', () => {
+    removeBookBtn.addEventListener('click', () => {
         myLibrary.splice(myLibrary.indexOf(item), 1);
         storeBook();
         storeData();
