@@ -26,21 +26,26 @@ class Book {
     };
 };
 
+
+// populate library with books with local storage from form data inputted
 function addBookToLibrary(e) {
     e.preventDefault();
     popUpForm.style.display = 'none';
 
     let currentBook = new Book();
     myLibrary.push(currentBook);
-    storeBook();
+    showBookMade();
     storeData();
     form.reset();
 };
 
-function storeBook() {
+
+// wrapper function to show books
+function showBookMade() {
     const display = document.getElementById('library-container');
     const books = document.querySelectorAll('.book');
 
+    // prevents duplication when interacting with an already made book
     books.forEach(book => {
         display.removeChild(book);
     });
@@ -50,7 +55,8 @@ function storeBook() {
     };
 };
 
-// Create and append a new book to the library-container on screen
+// Add the book DOM to the library container to be displayed by the 
+// showBookMade function
 function createBook(item) {
     const library = document.querySelector('#library-container');
     const bookDiv = document.createElement('div');
@@ -94,18 +100,18 @@ function createBook(item) {
 
     removeBookBtn.addEventListener('click', () => {
         myLibrary.splice(myLibrary.indexOf(item), 1);
-        storeBook();
+        showBookMade();
         storeData();
     });
 
     readBtn.addEventListener('click', () => {
         item.read = !item.read;
-        storeBook();
+        showBookMade();
         storeData();
     });
 };
 
-// Showing and storing each book
+// Storing each book
 
 function storeData() {
     localStorage.setItem('myLibrary', JSON.stringify(myLibrary));
@@ -114,12 +120,12 @@ function storeData() {
 //pulls books from local storage when page is refreshed
 function restore() {
     if (!localStorage.myLibrary) {
-        storeBook();
+        showBookMade();
     } else {
         let objects = localStorage.getItem('myLibrary') // gets information from local storage to use in below loop to create DOM/display
         objects = JSON.parse(objects);
         myLibrary = objects;
-        storeBook();
+        showBookMade();
     };
 };
 
