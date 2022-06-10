@@ -31,3 +31,22 @@ function addBookToLibrary(e) {
     let currentBook = new Book();
     myLibrary.push(currentBook);
 }
+
+// Showing and storing each book
+
+function storeData() {
+    localStorage.setItem('myLibrary', JSON.stringify(myLibrary));
+}
+
+function showBooks() {
+    const display = document.getElementById('library-container');
+    const books = document.querySelectorAll('.book');
+
+    books.forEach(book => {
+        display.removeChild(book);
+    })
+
+    for (let i = 0; i < myLibrary.length; i++) {
+        createBook(myLibrary[i]);
+    }
+}
