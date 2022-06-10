@@ -1,0 +1,46 @@
+@import url('https://fonts.googleapis.com/css2?family=Kdam+Thmor+Pro&display=swap');
+
+body {
+    background-color: #ffecb9;
+    font-family: 'Kdam Thmor Pro', sans-serif;
+}
+
+.header {
+    background-color: #ffdb76;
+    text-align: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
+h1 {
+    color: black;
+    font-size: 3em;
+    font-weight: bold;
+    text-align: center;
+    text-shadow: #ffecb7 0px 0px 10px;
+}
+
+#place-new-book-button {
+    margin-bottom: 5px;
+    position: relative;
+    top: -20px;
+}
+
+#new-book-button {
+    border-radius: 15px;
+    height: 50px;
+    width: 150px;
+    font-family: 'Kdam Thmor Pro', sans-serif;
+    font-size: 1em;
+}
+
+#new-book-button:hover {
+    background-color: #ffecb7;
+}
+
+#new-book-button:active {
+    background-color: #ffecb7;
+    transform: translateY(4px);
+}
