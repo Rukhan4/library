@@ -8,7 +8,7 @@ body {
 .header {
     background-color: #ffdb76;
     text-align: center;
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
@@ -49,7 +49,7 @@ h1 {
 
 #form {
     background-color: #fefefe;
-    margin-top: 15% auto;
+    margin: 15% auto;
     padding: 20px;
     border: 1px solid #888;
     width: 20%;
@@ -95,4 +95,11 @@ input[type=checkbox] {
     color: black;
     text-decoration: none;
     cursor: pointer;
+}
+
+/* All new books */
+#library-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
 }
