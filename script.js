@@ -23,16 +23,19 @@ class Book {
         this.author = author;
         this.pages = pages;
         this.read = read;
-    }
-}
+    };
+};
 
 function addBookToLibrary(e) {
     e.preventDefault();
-    popUpForm.style.display = none;
+    popUpForm.style.display = 'none';
 
-    let currentBook = new Book();
+    let currentBook = new Book(title, author, pages, read);
     myLibrary.push(currentBook);
-}
+    storeBook();
+    storeData();
+    FormData.reset();
+};
 
 function storeBook() {
     const display = document.getElementById('library-container');
@@ -47,7 +50,7 @@ function storeBook() {
     }
 }
 
-// Create and append a new book to the library
+// Create and append a new book to the library-container on screen
 function createBook(item) {
     const library = document.querySelector('#library-container');
     const bookDiv = document.createElement('div');
@@ -57,14 +60,55 @@ function createBook(item) {
     const removeBookBtn = document.createElement('button');
     const readBtn = document.createElement('button');
 
-}
+    bookDiv.classList.add('book');
+    bookDiv.setAttribute('id', myLibrary.indexOf(item));
 
+    titleDiv.textContent = item.title;
+    titleDiv.classList.add('title');
+    bookDiv.appendChild(titleDiv);
+
+    authorDiv.textContent = item.author;
+    authorDiv.classList.add('author');
+    bookDiv.appendChild(authorDiv);
+
+    pageDiv.textContent = item.pages;
+    pageDiv.classList.add('pages');
+    bookDiv.appendChild(pageDiv);
+
+    readBtn.classList.add('readBtn');
+    if (item.read === false) {
+        readBtn.textContent = 'Not Read';
+        readBtn.style.backgroundColor = '#e04f63';
+    } else {
+        readBtn.textContent = 'Read';
+        readBtn.style.backgroundColor = '#63da63';
+    };
+    bookDiv.appendChild(readBtn);
+
+    removeBookBtn.textContent = 'Remove';
+    removeBookBtn.setAttribute('id', 'removeBtn');
+    bookDiv.appendChild(removeBookBtn);
+
+    library.appendChild(bookDiv);
+
+    removeBtn.addEventListener('click', () => {
+        myLibrary.splice(myLibrary.indexOf(item), 1);
+        storeBook();
+        storeData();
+    });
+
+    readBtn.addEventListener('click', () => {
+        myLibrary.splice(myLibrary.indexOf(item), 1);
+        storeData();
+        storeBook();
+    });
+};
 
 // Showing and storing each book
 
 function storeData() {
     localStorage.setItem('myLibrary', JSON.stringify(myLibrary));
-}
+};
 
 //pulls books from local storage when page is refreshed
 function restore() {
@@ -75,5 +119,7 @@ function restore() {
         objects = JSON.parse(objects);
         myLibrary = objects;
         storeBook();
-    }
-}
+    };
+};
+
+restore();
