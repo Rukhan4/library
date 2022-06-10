@@ -47,6 +47,19 @@ function storeBook() {
     }
 }
 
+// Create and append a new book to the library
+function createBook(item) {
+    const library = document.querySelector('#library-container');
+    const bookDiv = document.createElement('div');
+    const titleDiv = document.createElement('div');
+    const authorDiv = document.createElement('div');
+    const pageDiv = document.createElement('div');
+    const removeBookBtn = document.createElement('button');
+    const readBtn = document.createElement('button');
+
+}
+
+
 // Showing and storing each book
 
 function storeData() {
