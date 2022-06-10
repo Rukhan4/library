@@ -16,6 +16,21 @@
             <button id="new-book-button">+ New Book</button>
         </div>
     </div>
+    <div class="popUp">
+        <form id="form" action="./script.js">
+            <span class="close">&times;</span>
+            <legend>New Book</legend>
+            <div id="textInput">
+                <p><input type='text' id='title' name='title' placeholder='Title'></p>
+                <p><input type='text' id='author' name='author' placeholder='Author'></p>
+                <p><input type='text' id='pages' name='pages' placeholder='Pages'></p>
+            </div>
+            <div id="checkBox">
+                <p><label>Read: </label><input type='checkbox' id="read" name="read" value="yes"></p>
+            </div>
+            <button type="submit" form="form" id="submit">Add Book</button>
+        </form>
+    </div>
 </body>
 
 </html>
