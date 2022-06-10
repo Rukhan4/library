@@ -98,9 +98,9 @@ function createBook(item) {
     });
 
     readBtn.addEventListener('click', () => {
-        myLibrary.splice(myLibrary.indexOf(item), 1);
-        storeData();
+        item.read = !item.read;
         storeBook();
+        storeData();
     });
 };
 
