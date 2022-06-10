@@ -17,11 +17,13 @@ addBook.addEventListener('click', addBookToLibrary);
 
 let myLibrary = [];
 
-function Book() {
-    this.title = form.title.value;
-    this.author = form.author.value;
-    this.pages = form.pages.value + 'pg';
-    this.read = form.read.checked;
+class Book {
+    constructor(title, author, pages, read) {
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.read = read;
+    }
 }
 
 function addBookToLibrary(e) {
@@ -32,13 +34,7 @@ function addBookToLibrary(e) {
     myLibrary.push(currentBook);
 }
 
-// Showing and storing each book
-
-function storeData() {
-    localStorage.setItem('myLibrary', JSON.stringify(myLibrary));
-}
-
-function showBooks() {
+function storeBook() {
     const display = document.getElementById('library-container');
     const books = document.querySelectorAll('.book');
 
@@ -48,5 +44,23 @@ function showBooks() {
 
     for (let i = 0; i < myLibrary.length; i++) {
         createBook(myLibrary[i]);
+    }
+}
+
+// Showing and storing each book
+
+function storeData() {
+    localStorage.setItem('myLibrary', JSON.stringify(myLibrary));
+}
+
+//pulls books from local storage when page is refreshed
+function restore() {
+    if (!localStorage.myLibrary) {
+        storeBook();
+    } else {
+        let objects = localStorage.getItem('myLibrary') // gets information from local storage to use in below loop to create DOM/display
+        objects = JSON.parse(objects);
+        myLibrary = objects;
+        storeBook();
     }
 }
