@@ -21,7 +21,7 @@ class Book {
     constructor() {
         this.title = form.title.value;
         this.author = form.author.value;
-        this.pages = form.pages.value + 'pages';
+        this.pages = form.pages.value + ' pages';
         this.read = form.read.checked;
     };
 };
