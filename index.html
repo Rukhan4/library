@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Library</title>
     <link rel="stylesheet" href="./style.css">
+    <script src="./script.js" defer></script>
 </head>
 
 <body>
@@ -16,7 +17,7 @@
             <button id="new-book-button">+ New Book</button>
         </div>
     </div>
-    <div class="popUp">
+    <div id="popUp">
         <form id="form" action="./script.js">
             <span class="close">&times;</span>
             <legend>New Book</legend>
@@ -31,6 +32,7 @@
             <button type="submit" form="form" id="submit">Add Book</button>
         </form>
     </div>
+    <div id="library-container"></div>
 </body>
 
 </html>
